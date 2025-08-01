@@ -41,7 +41,7 @@ jobs:
       version: ${{ steps.version.outputs.version }}
       image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
     permissions:
-      contents: read
+      contents: write
       packages: write
       id-token: write
 
