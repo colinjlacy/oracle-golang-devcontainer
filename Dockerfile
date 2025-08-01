@@ -2,15 +2,15 @@
 FROM ghcr.io/oracle/oraclelinux9-instantclient:23
 
 # Set environment variables for Go
-ENV GO_VERSION=1.21.5
+ENV GO_VERSION=1.24.5
 ENV GOROOT=/usr/local/go
 ENV GOPATH=/go
 ENV PATH=$GOROOT/bin:$GOPATH/bin:$PATH
 ENV CGO_ENABLED=1
 
 # Install system dependencies
-RUN microdnf update -y && \
-    microdnf install -y \
+RUN dnf update -y && \
+    dnf install -y \
         gcc \
         gcc-c++ \
         make \
@@ -21,7 +21,7 @@ RUN microdnf update -y && \
         ca-certificates \
         libaio \
         pkg-config && \
-    microdnf clean all
+    dnf clean all
 
 # Install Go
 RUN curl -fsSL https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz -o go.tar.gz && \
